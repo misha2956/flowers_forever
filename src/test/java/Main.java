@@ -16,7 +16,9 @@ public class Main {
         order.addUser(receiver1);
         order.addUser(receiver2);
 
-        order.order();
+        if (order.order()) {
+            System.out.println("Order was successful!");
+        }
 
         Connection connection = Connection.getConnection();
         for (Map.Entry<FlowerType, Integer> flowerType : connection.getFlowerTypeStats().entrySet()) {

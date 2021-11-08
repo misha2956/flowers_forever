@@ -4,11 +4,12 @@ import db.Connection;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
 public class Order {
     Connection connection;
     FlowerType flowerType;
-    private final List<User> users = new ArrayList<>();
+    private final @Getter List<User> users = new ArrayList<>();
 
     public Order(FlowerType flowerType) {
         this.flowerType = flowerType;
@@ -32,8 +33,9 @@ public class Order {
         }
     }
 
-    public void order() {
+    public boolean order() {
         connection.submitStats(flowerType);
         notifyUsers("NEW_ORDER");
+        return true;
     }
 }
